@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Fri Feb 12 10:45:47 KST 2021
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1613094347689
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact org.apache.maven.plugins\:maven-war-plugin\:jar\:2.2 from/to central (https\://repo.maven.apache.org/maven2)\: C\:\\Users\\sky\\.m2\\repository\\org\\apache\\maven\\plugins\\maven-war-plugin\\2.2\\aether-30af1747-1414-47cb-858a-6b8334382bdb-maven-war-plugin-2.2.jar-in-progress (\uC9C0\uC815\uB41C \uD30C\uC77C\uC744 \uCC3E\uC744 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4)

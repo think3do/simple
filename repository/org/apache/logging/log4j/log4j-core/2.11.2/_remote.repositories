@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Fri Feb 12 10:48:43 KST 2021
+log4j-core-2.11.2-sources.jar>mvn2s=
+log4j-core-2.11.2.pom>mvn2s=
+log4j-core-2.11.2.jar>mvn2s=

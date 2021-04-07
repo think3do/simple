@@ -1,0 +1,9 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Tue Mar 02 17:37:36 KST 2021
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact org.springframework\:spring-orm\:pom\:4.3.16.RELEASE from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/org/springframework/spring-orm/4.3.16.RELEASE/spring-orm-4.3.16.RELEASE.pom. Error code 501, HTTPS Required
+http\://www.egovframe.go.kr/maven/.error=
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1614674256528
+https\://repo.maven.apache.org/maven2/.lastUpdated=1614674256945
+http\://www.egovframe.go.kr/maven/.lastUpdated=1614674256566
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1614674256580

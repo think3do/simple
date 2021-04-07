@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Fri Feb 12 10:48:44 KST 2021
+slf4j-api-1.7.25.jar>mvn2s=
+slf4j-api-1.7.25-sources.jar>mvn2s=
+slf4j-api-1.7.25.pom>mvn2s=

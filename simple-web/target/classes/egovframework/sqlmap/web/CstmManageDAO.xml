@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CstmManageDAO">
+
+	<typeAlias  alias="CstmDVO"  type="web.a.dvo.CstmDVO"/>
+	<typeAlias  alias="SearchVO" type="web.z.util.SearchVO"/>
+	
+	
+	<select id="CstmManageDAO.ID" resultClass="java.lang.String">
+		<![CDATA[
+			SELECT SEQ_NEXTVAL("CSTM_ID") AS ID				
+		]]>
+	</select>
+
+	<insert id="CstmManageDAO.insert" parameterClass="CstmDVO" >
+		<![CDATA[
+			INSERT INTO TCST001
+			(  
+				  CSTM_USER_NO
+				, CSTM_DSCM_NO
+				, CSTM_NM
+				, CSTM_ADR
+				, SEX_CL_CD
+				, TEL_NO
+				, HP_NO
+				, EML_ADR
+				, SCH_NM
+				, JNNG_DTM
+				, WITH_DTM
+				, AGR_YN
+				, AGR_DT
+				, SMS_FRW_TRGT_YN
+				, ETC_CNTN
+				, MATE_STAT_CL_CD
+				, FRS_RGT_DTM
+				, FRS_RGT_UER_ID
+				, FRS_RGT_PGM_ID
+				, LST_ALT_DTM
+				, LST_ALT_USER_ID
+				, LST_ALT_PGM_ID
+			) VALUES (
+				  #cstmUserNo#
+				, #cstmDscmNo#
+				, #cstmNm#
+				, #cstmAdr#
+				, #sexClCd#
+				, #telNo#
+				, #hpNo#
+				, #emlAdr#
+				, #schNm#
+				, #jnngDtm#
+				, #withDtm#
+				, #agrYn#
+				, #agrDt#
+				, #smsFrwTrgtYn#
+				, #etcCntn#
+				, #mateStatClCd#
+				, #frsRgtDtm#
+				, #frsRgtUerId#
+				, #frsRgtPgmId#
+				, #lstAltDtm#
+				, #lstAltUserId#
+				, #lstAltPgmId#
+			)
+		]]>
+	</insert>
+	
+	
+	<select id="CstmManageDAO.selectTotalCnt" parameterClass="SearchVO" resultClass="java.lang.Integer" >
+		<![CDATA[
+		   SELECT COUNT(1)
+		     FROM TCST001 a
+			WHERE 1=1
+			  AND A.MATE_STAT_CL_CD = '01'
+		]]>
+			<isEqual prepend="AND" property="searchCnd" compareValue="0">
+				<![CDATA[	a.CSTM_NM LIKE CONCAT ('%', #searchWrd#,'%') 		]]>
+			</isEqual>
+			<isEqual prepend="AND" property="searchCnd" compareValue="1">
+				<![CDATA[	a.CSTM_DSCM_NO LIKE CONCAT ('%', #searchWrd#,'%') 		]]>
+			</isEqual>	
+			<isEqual prepend="AND" property="searchCnd" compareValue="2">
+				<![CDATA[	a.HP_NO LIKE CONCAT ('%', #searchWrd#,'%') 		]]>
+			</isEqual>			
+	</select>	
+	
+	
+	<resultMap id="cstmDVOList" class="web.a.dvo.CstmDVO">
+		<result property="cstmUserNo" column="CSTM_USER_NO" columnIndex="1"/>
+		<result property="cstmDscmNo" column="CSTM_DSCM_NO" columnIndex="2"/>
+		<result property="cstmNm" column="CSTM_NM" columnIndex="3"/>
+		<result property="cstmAdr" column="CSTM_ADR" columnIndex="4"/>
+		<result property="sexClCd" column="SEX_CL_CD" columnIndex="5"/>
+		<result property="telNo" column="TEL_NO" columnIndex="6"/>
+		<result property="hpNo" column="HP_NO" columnIndex="7"/>
+		<result property="emlAdr" column="EML_ADR" columnIndex="8"/>
+		<result property="schNm" column="SCH_NM" columnIndex="9"/>		
+	</resultMap>
+			
+	<select id="CstmManageDAO.selectList" parameterClass="SearchVO" resultMap="cstmDVOList" >
+		<![CDATA[
+			SELECT
+			       A.CSTM_USER_NO
+				 , A.CSTM_DSCM_NO
+				 , A.CSTM_NM
+				 , A.CSTM_ADR
+				 , A.SEX_CL_CD
+				 , A.TEL_NO
+				 , A.HP_NO
+				 , A.EML_ADR
+				 , A.SCH_NM
+			 FROM TCST001 A
+			WHERE 1=1
+			  AND A.MATE_STAT_CL_CD = '01'
+		]]>
+			<isEqual prepend="AND" property="searchCnd" compareValue="0">
+				<![CDATA[	a.CSTM_NM LIKE CONCAT ('%', #searchWrd#,'%') 		]]>
+			</isEqual>
+			<isEqual prepend="AND" property="searchCnd" compareValue="1">
+				<![CDATA[	a.CSTM_DSCM_NO LIKE CONCAT ('%', #searchWrd#,'%') 		]]>
+			</isEqual>	
+			<isEqual prepend="AND" property="searchCnd" compareValue="2">
+				<![CDATA[	a.HP_NO LIKE CONCAT ('%', #searchWrd#,'%') 		]]>
+			</isEqual>					
+		<![CDATA[			
+			ORDER BY A.CSTM_NM ASC
+			LIMIT #recordCountPerPage# OFFSET #firstIndex#
+		]]>				
+	</select>	
+	
+	<resultMap id="detail" class="web.a.dvo.CstmDVO">
+		<result property="cstmUserNo" column="CSTM_USER_NO" columnIndex="1"/>
+		<result property="cstmDscmNo" column="CSTM_DSCM_NO" columnIndex="2"/>
+		<result property="cstmNm" column="CSTM_NM" columnIndex="3"/>
+		<result property="cstmAdr" column="CSTM_ADR" columnIndex="4"/>
+		<result property="sexClCd" column="SEX_CL_CD" columnIndex="5"/>
+		<result property="telNo" column="TEL_NO" columnIndex="6"/>
+		<result property="hpNo" column="HP_NO" columnIndex="7"/>
+		<result property="emlAdr" column="EML_ADR" columnIndex="8"/>
+		<result property="schNm" column="SCH_NM" columnIndex="9"/>		
+		<result property="etcCntn" column="ETC_CNTN" columnIndex="10"/>		
+	</resultMap>
+	
+	<select id="CstmManageDAO.selectDetail" parameterClass="CstmDVO" resultMap="detail" >
+		<![CDATA[
+			SELECT
+			       A.CSTM_USER_NO
+				 , A.CSTM_DSCM_NO
+				 , A.CSTM_NM
+				 , A.CSTM_ADR
+				 , A.SEX_CL_CD
+				 , A.TEL_NO
+				 , A.HP_NO
+				 , A.EML_ADR
+				 , A.SCH_NM
+				 , A.ETC_CNTN
+			 FROM TCST001 A
+			WHERE 1=1
+			  AND CSTM_USER_NO = #cstmUserNo#
+			  AND A.MATE_STAT_CL_CD = '01'
+		]]>
+	</select>	
+	
+	
+ 	<update id="CstmManageDAO.update" parameterClass="CstmDVO">
+ 		<![CDATA[
+			
+			UPDATE TCST001 
+			   SET CSTM_DSCM_NO     = #cstmDscmNo#           
+				 , CSTM_NM          = #cstmNm#               
+				 , CSTM_ADR         = #cstmAdr#              
+				 , SEX_CL_CD        = #sexClCd#              
+				 , TEL_NO           = #telNo#                
+				 , HP_NO            = #hpNo#                 
+				 , EML_ADR          = #emlAdr#               
+				 , SCH_NM           = #schNm#                       
+				 , ETC_CNTN         = #etcCntn#
+				 , LST_ALT_DTM     = #lstAltDtm#
+				 , LST_ALT_USER_ID = #lstAltUserId#
+				 , LST_ALT_PGM_ID  = #lstAltPgmId#
+			 WHERE 1=1
+			   AND CSTM_USER_NO = #cstmUserNo#
+			   AND MATE_STAT_CL_CD = '01'
+ 		]]>
+ 	</update>
+ 	
+	
+ 	<update id="CstmManageDAO.delete" parameterClass="CstmDVO">
+ 		<![CDATA[
+ 		    
+ 		    UPDATE TCST001 
+			   SET MATE_STAT_CL_CD = '03'
+				 , LST_ALT_DTM     = #lstAltDtm#
+				 , LST_ALT_USER_ID = #lstAltUserId#
+				 , LST_ALT_PGM_ID  = #lstAltPgmId#
+			 WHERE 1=1
+			   AND CSTM_USER_NO = #cstmUserNo#
+			   AND MATE_STAT_CL_CD = '01'
+ 		]]>
+ 	</update>
+	
+	
+	
+</sqlMap>

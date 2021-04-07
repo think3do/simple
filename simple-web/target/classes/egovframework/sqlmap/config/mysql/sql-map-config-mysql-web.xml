@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<sqlMap resource="egovframework/sqlmap/web/CstmManageDAO.xml"/>
+	<sqlMap resource="egovframework/sqlmap/web/UserManageDAO.xml"/>
+	<sqlMap resource="egovframework/sqlmap/web/CmmManageDAO.xml"/>
+	<sqlMap resource="egovframework/sqlmap/web/CmmDetailManageDAO.xml"/>
+</sqlMapConfig>

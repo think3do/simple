@@ -1,0 +1,5 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Tue Mar 02 17:38:50 KST 2021
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact egovframework.rte\:egovframework.rte.fdl.logging\:jar\:3.8.0 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/egovframework/rte/egovframework.rte.fdl.logging/3.8.0/egovframework.rte.fdl.logging-3.8.0.jar. Error code 501, HTTPS Required
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1614674324989
+http\://www.egovframe.go.kr/maven/.lastUpdated=1614674330060

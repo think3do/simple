@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Sat Feb 13 10:22:56 KST 2021
+xpp3_min-1.1.4c.jar>central=
+xpp3_min-1.1.4c-sources.jar>mvn2s=
+xpp3_min-1.1.4c.pom>central=

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserManageDAO">
+
+	<typeAlias  alias="UserDVO"  type="web.a.dvo.UserDVO"/>
+	<typeAlias  alias="SearchVO" type="web.z.util.SearchVO"/>
+	
+	
+	<select id="UserManageDAO.ID" resultClass="java.lang.String">
+		<![CDATA[
+			SELECT SEQ_NEXTVAL("USER_ID") AS ID				
+		]]>
+	</select>
+
+	<insert id="UserManageDAO.insert" parameterClass="UserDVO" >
+		<![CDATA[
+			INSERT INTO TUSR001
+			(  
+				  USER_NO
+				, USER_ID
+				, PSWD
+				, PSWD_ERR_CNT
+				, USER_CLSF_CD
+				, USER_NM
+				, USER_ADR
+				, HP_NO
+				, EML_ADR
+				, ETC_CNTN
+				, MATE_STAT_CL_CD
+				, FRS_RGT_DTM
+				, FRS_RGT_UER_ID
+				, FRS_RGT_PGM_ID
+				, LST_ALT_DTM
+				, LST_ALT_USER_ID
+				, LST_ALT_PGM_ID
+			) VALUES (
+				  #userNo#
+				, #userId#
+				, #pswd#
+				, 0
+				, #userClsfCd#
+				, #userNm#
+				, #userAdr#
+				, #hpNo#
+				, #emlAdr#
+				, #etcCntn#
+				, #mateStatClCd#
+				, #frsRgtDtm#
+				, #frsRgtUerId#
+				, #frsRgtPgmId#
+				, #lstAltDtm#
+				, #lstAltUserId#
+				, #lstAltPgmId#
+			)
+		]]>
+	</insert>
+	
+	
+	<select id="UserManageDAO.selectTotalCnt" parameterClass="SearchVO" resultClass="java.lang.Integer" >
+		<![CDATA[
+		   SELECT COUNT(1)
+		     FROM TUSR001 a
+			WHERE 1=1
+			  AND A.MATE_STAT_CL_CD = '01'
+		]]>
+			<isEqual prepend="AND" property="searchCnd" compareValue="0">
+				<![CDATA[	a.USER_NM LIKE CONCAT ('%', #searchWrd#,'%') 		]]>
+			</isEqual>
+			<isEqual prepend="AND" property="searchCnd" compareValue="1">
+				<![CDATA[	a.USER_ID LIKE CONCAT ('%', #searchWrd#,'%') 		]]>
+			</isEqual>	
+			<isEqual prepend="AND" property="searchCnd" compareValue="2">
+				<![CDATA[	a.HP_NO   LIKE CONCAT ('%', #searchWrd#,'%') 		]]>
+			</isEqual>			
+	</select>	
+	
+	
+	<resultMap id="userDVOList" class="web.a.dvo.UserDVO">
+		<result property="userNo" column="USER_NO" columnIndex="1"/>
+		<result property="userId" column="USER_ID" columnIndex="2"/>
+		<result property="userNm" column="USER_NM" columnIndex="3"/>
+		<result property="hpNo"   column="HP_NO"   columnIndex="4"/>
+	</resultMap>
+			
+	<select id="UserManageDAO.selectList" parameterClass="SearchVO" resultMap="userDVOList" >
+		<![CDATA[
+			SELECT
+			       A.USER_NO
+				 , A.USER_ID
+				 , A.USER_NM
+				 , A.HP_NO
+			 FROM TUSR001 A
+			WHERE 1=1
+			  AND A.MATE_STAT_CL_CD = '01'
+		]]>
+			<isEqual prepend="AND" property="searchCnd" compareValue="0">
+				<![CDATA[	a.USER_NM LIKE CONCAT ('%', #searchWrd#,'%') 		]]>
+			</isEqual>
+			<isEqual prepend="AND" property="searchCnd" compareValue="1">
+				<![CDATA[	a.USER_ID LIKE CONCAT ('%', #searchWrd#,'%') 		]]>
+			</isEqual>	
+			<isEqual prepend="AND" property="searchCnd" compareValue="2">
+				<![CDATA[	a.HP_NO   LIKE CONCAT ('%', #searchWrd#,'%') 		]]>
+			</isEqual>					
+		<![CDATA[			
+			ORDER BY A.USER_NM ASC
+			LIMIT #recordCountPerPage# OFFSET #firstIndex#
+		]]>				
+	</select>	
+	
+	<resultMap id="detail" class="web.a.dvo.UserDVO">
+		<result property="userNo"  column="USER_NO"  columnIndex="1"/>
+		<result property="userId"  column="USER_ID"  columnIndex="2"/>
+		<result property="userNm"  column="USER_NM"  columnIndex="3"/>
+		<result property="userAdr" column="USER_ADR" columnIndex="4"/>
+		<result property="hpNo"    column="HP_NO"    columnIndex="5"/>
+		<result property="emlAdr"  column="EML_ADR"  columnIndex="6"/>
+		<result property="etcCntn" column="ETC_CNTN" columnIndex="7"/>		
+		<result property="userClsfCd" column="USER_CLSF_CD" columnIndex="8"/>		
+	</resultMap>
+	
+	<select id="UserManageDAO.selectDetail" parameterClass="UserDVO" resultMap="detail" >
+		<![CDATA[
+			SELECT
+			       A.USER_NO
+				 , A.USER_ID
+				 , A.USER_NM
+				 , A.USER_ADR
+				 , A.HP_NO
+				 , A.EML_ADR
+				 , A.ETC_CNTN
+				 , CASE WHEN A.USER_CLSF_CD = '01' THEN '관리자(원장)'
+				        WHEN A.USER_CLSF_CD = '02' THEN '선생님'
+				        WHEN A.USER_CLSF_CD = '03' THEN '일반'
+				        WHEN A.USER_CLSF_CD = '99' THEN '관리자'
+				    END AS USER_CLSF_CD
+			 FROM TUSR001 A
+			WHERE 1=1
+			  AND USER_NO = #userNo#
+			  AND A.MATE_STAT_CL_CD = '01'
+		]]>
+	</select>	
+	
+	
+ 	<update id="UserManageDAO.update" parameterClass="UserDVO">
+ 		<![CDATA[
+			
+			UPDATE TUSR001 
+			   SET USER_ADR        = #userAdr#              
+				 , HP_NO           = #hpNo#                 
+				 , EML_ADR         = #emlAdr#               
+				 , ETC_CNTN        = #etcCntn#
+				 , LST_ALT_DTM     = #lstAltDtm#
+				 , LST_ALT_USER_ID = #lstAltUserId#
+				 , LST_ALT_PGM_ID  = #lstAltPgmId#
+			 WHERE 1=1
+			   AND USER_NO = #userNo#
+			   AND MATE_STAT_CL_CD = '01'
+ 		]]>
+ 	</update>
+ 	
+	
+ 	<update id="UserManageDAO.delete" parameterClass="UserDVO">
+ 		<![CDATA[
+ 		    
+ 		    UPDATE TUSR001 
+			   SET MATE_STAT_CL_CD = '03'
+				 , LST_ALT_DTM     = #lstAltDtm#
+				 , LST_ALT_USER_ID = #lstAltUserId#
+				 , LST_ALT_PGM_ID  = #lstAltPgmId#
+			 WHERE 1=1
+			   AND USER_NO = #userNo#
+			   AND MATE_STAT_CL_CD = '01'
+ 		]]>
+ 	</update>
+	
+	
+	
+</sqlMap>

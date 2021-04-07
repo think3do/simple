@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Fri Feb 12 10:48:56 KST 2021
+antlr-3.5-sources.jar>mvn2s=
+antlr-3.5.jar>mvn2s=
+antlr-3.5.pom>mvn2s=

@@ -1,0 +1,9 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Tue Mar 02 17:37:57 KST 2021
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact commons-dbcp\:commons-dbcp\:pom\:1.4 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/commons-dbcp/commons-dbcp/1.4/commons-dbcp-1.4.pom. Error code 501, HTTPS Required
+http\://www.egovframe.go.kr/maven/.error=
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1614674276906
+https\://repo.maven.apache.org/maven2/.lastUpdated=1614674277432
+http\://www.egovframe.go.kr/maven/.lastUpdated=1614674276961
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1614674276984

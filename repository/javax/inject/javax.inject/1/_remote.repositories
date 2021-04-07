@@ -1,0 +1,7 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Apr 08 00:05:59 KST 2021
+javax.inject-1.pom>central=
+javax.inject-1.pom>mvn2s=
+javax.inject-1-sources.jar>mvn2s=
+javax.inject-1.jar>mvn2s=
+javax.inject-1.jar>central=

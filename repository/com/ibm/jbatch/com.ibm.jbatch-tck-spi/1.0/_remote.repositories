@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Sat Feb 13 10:22:54 KST 2021
+com.ibm.jbatch-tck-spi-1.0.pom>mvn2s=
+com.ibm.jbatch-tck-spi-1.0.jar>mvn2s=
+com.ibm.jbatch-tck-spi-1.0-sources.jar>mvn2s=

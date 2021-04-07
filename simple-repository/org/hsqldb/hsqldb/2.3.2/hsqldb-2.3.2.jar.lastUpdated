@@ -1,0 +1,9 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Tue Mar 02 17:39:44 KST 2021
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact org.hsqldb\:hsqldb\:jar\:2.3.2 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/org/hsqldb/hsqldb/2.3.2/hsqldb-2.3.2.jar. Error code 501, HTTPS Required
+http\://www.egovframe.go.kr/maven/.error=
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1614674325093
+https\://repo.maven.apache.org/maven2/.lastUpdated=1614674384347
+http\://www.egovframe.go.kr/maven/.lastUpdated=1614674330977
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1614674331923

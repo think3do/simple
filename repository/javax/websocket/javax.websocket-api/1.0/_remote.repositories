@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Sat Feb 13 10:23:32 KST 2021
+javax.websocket-api-1.0.jar>mvn2s=
+javax.websocket-api-1.0.pom>mvn2s=
+javax.websocket-api-1.0-sources.jar>mvn2s=

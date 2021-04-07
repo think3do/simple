@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CmmManageDAO">
+
+	<typeAlias  alias="CmmDVO"  type="web.d.dvo.CmmDVO"/>
+	<typeAlias  alias="SearchVO" type="web.z.util.SearchVO"/>
+	
+	<insert id="CmmManageDAO.insert" parameterClass="CmmDVO" >
+		<![CDATA[
+			INSERT INTO TCMM001
+			(  
+				  CMM_CD
+                , CMM_NM
+                , USE_YN
+				, MATE_STAT_CL_CD
+				, FRS_RGT_DTM
+				, FRS_RGT_UER_ID
+				, FRS_RGT_PGM_ID
+				, LST_ALT_DTM
+				, LST_ALT_USER_ID
+				, LST_ALT_PGM_ID
+			) VALUES (
+				  #cmmCd#
+				, #cmmNm#
+				, 'Y'
+				, #mateStatClCd#
+				, #frsRgtDtm#
+				, #frsRgtUerId#
+				, #frsRgtPgmId#
+				, #lstAltDtm#
+				, #lstAltUserId#
+				, #lstAltPgmId#
+			)
+		]]>
+	</insert>
+	
+	
+	<select id="CmmManageDAO.selectTotalCnt" parameterClass="SearchVO" resultClass="java.lang.Integer" >
+		<![CDATA[
+		   SELECT COUNT(1)
+		     FROM TCMM001 a
+			WHERE 1=1
+			  AND A.MATE_STAT_CL_CD = '01'
+		]]>
+			<isEqual prepend="AND" property="searchCnd" compareValue="0">
+				<![CDATA[	a.CMM_CD LIKE CONCAT ('%', #searchWrd#,'%') 		]]>
+			</isEqual>
+			<isEqual prepend="AND" property="searchCnd" compareValue="1">
+				<![CDATA[	a.CMM_NM LIKE CONCAT ('%', #searchWrd#,'%') 		]]>
+			</isEqual>	
+	</select>	
+	
+	
+	<resultMap id="cmmDVOList" class="web.d.dvo.CmmDVO">
+		<result property="cmmCd" column="CMM_CD" columnIndex="1"/>
+		<result property="cmmNm" column="CMM_NM" columnIndex="2"/>
+		<result property="useYn" column="USE_YN" columnIndex="3"/>
+	</resultMap>
+			
+	<select id="CmmManageDAO.selectList" parameterClass="SearchVO" resultMap="cmmDVOList" >
+		<![CDATA[
+			SELECT
+			       A.CMM_CD
+				 , A.CMM_NM
+				 , A.USE_YN
+			 FROM TCMM001 A
+			WHERE 1=1
+			  AND A.MATE_STAT_CL_CD = '01'
+		]]>
+			<isEqual prepend="AND" property="searchCnd" compareValue="0">
+				<![CDATA[	a.CMM_CD LIKE CONCAT ('%', #searchWrd#,'%') 		]]>
+			</isEqual>
+			<isEqual prepend="AND" property="searchCnd" compareValue="1">
+				<![CDATA[	a.CMM_NM LIKE CONCAT ('%', #searchWrd#,'%') 		]]>
+			</isEqual>	
+		<![CDATA[			
+			ORDER BY A.CMM_CD ASC
+			LIMIT #recordCountPerPage# OFFSET #firstIndex#
+		]]>				
+	</select>	
+	
+	<resultMap id="detail" class="web.d.dvo.CmmDVO">
+		<result property="cmmCd" column="CMM_CD" columnIndex="1"/>
+		<result property="cmmNm" column="CMM_NM" columnIndex="2"/>
+		<result property="useYn" column="USE_YN" columnIndex="3"/>	
+	</resultMap>
+	
+	<select id="CmmManageDAO.selectDetail" parameterClass="CmmDVO" resultMap="detail" >
+		<![CDATA[
+			SELECT
+			       A.CMM_CD
+				 , A.CMM_NM
+				 , A.USE_YN
+			 FROM TCMM001 A
+			WHERE 1=1
+			  AND A.CMM_CD = #cmmCd#
+			  AND A.MATE_STAT_CL_CD = '01'
+		]]>
+	</select>	
+	
+	
+ 	<update id="CmmManageDAO.update" parameterClass="CmmDVO">
+ 		<![CDATA[
+			
+			UPDATE TCMM001 
+			   SET CMM_NM          = #cmmNm#           
+				 , USE_YN          = #useYn#          
+				 , LST_ALT_DTM     = #lstAltDtm#
+				 , LST_ALT_USER_ID = #lstAltUserId#
+				 , LST_ALT_PGM_ID  = #lstAltPgmId#
+			 WHERE 1=1
+			   AND CMM_CD = #cmmCd#
+			   AND MATE_STAT_CL_CD = '01'
+ 		]]>
+ 	</update>
+ 	
+	
+ 	<update id="CmmManageDAO.delete" parameterClass="CmmDVO">
+ 		<![CDATA[
+ 		    
+ 		    DELETE 
+ 		      FROM TCMM001 
+			 WHERE 1=1
+			   AND CMM_CD = #cmmCd#
+			   AND MATE_STAT_CL_CD = '01'
+ 		]]>
+ 	</update>
+	
+	
+	
+</sqlMap>

@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Apr 08 00:06:32 KST 2021
+spring-boot-starter-test-2.4.4.jar>central=
+spring-boot-starter-test-2.4.4.pom>central=
+spring-boot-starter-test-2.4.4-sources.jar>central=

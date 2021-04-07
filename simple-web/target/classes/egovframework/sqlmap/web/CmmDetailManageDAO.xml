@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CmmDetailManageDAO">
+
+	<typeAlias  alias="CmmDVO"  type="web.d.dvo.CmmDVO"/>
+	<typeAlias  alias="SearchVO" type="web.z.util.SearchVO"/>
+	
+	<insert id="CmmDetailManageDAO.insert" parameterClass="CmmDVO" >
+		<![CDATA[
+			INSERT INTO TCMM002
+			(  
+				  CMM_CD
+                , CMM_CL_CD
+                , CMM_CL_CD_NM
+                , USE_YN
+                , ORD_NO
+				, PAY_AMT
+				, MATE_STAT_CL_CD
+				, FRS_RGT_DTM
+				, FRS_RGT_UER_ID
+				, FRS_RGT_PGM_ID
+				, LST_ALT_DTM
+				, LST_ALT_USER_ID
+				, LST_ALT_PGM_ID
+			) VALUES (
+				  #cmmCd#
+				, #cmmClCd#
+				, #cmmClCdNm#
+				, 'Y'
+				, #ordNo#
+				, #payAmt#
+				, #mateStatClCd#
+				, #frsRgtDtm#
+				, #frsRgtUerId#
+				, #frsRgtPgmId#
+				, #lstAltDtm#
+				, #lstAltUserId#
+				, #lstAltPgmId#
+			)
+		]]>
+	</insert>
+	
+	<resultMap id="cmmDVOList" class="web.d.dvo.CmmDVO">
+		<result property="cmmCd"     column="CMM_CD" columnIndex="1"/>
+		<result property="cmmClCd"   column="CMM_CL_CD" columnIndex="2"/>
+		<result property="cmmClCdNm" column="CMM_CL_CD_NM" columnIndex="3"/>
+		<result property="useYn"     column="USE_YN" columnIndex="4"/>
+		<result property="ordNo"     column="ORD_NO" columnIndex="5"/>
+		<result property="payAmt"    column="PAY_AMT" columnIndex="6"/>
+	</resultMap>
+			
+	<select id="CmmDetailManageDAO.selectList" parameterClass="CmmDVO" resultMap="cmmDVOList" >
+		<![CDATA[
+			SELECT
+			      A.CMM_CD
+				, A.CMM_CL_CD
+				, A.CMM_CL_CD_NM
+				, A.USE_YN
+                , A.ORD_NO
+				, A.PAY_AMT
+			 FROM TCMM002 A
+			WHERE 1=1
+			  AND A.CMM_CD = #cmmCd#
+			  AND A.MATE_STAT_CL_CD = '01'
+			ORDER BY A.CMM_CD, A.ORD_NO, A.CMM_CL_CD ASC
+		]]>			
+	</select>	
+	
+	<resultMap id="detail" class="web.d.dvo.CmmDVO">
+		<result property="cmmCd"     column="CMM_CD" columnIndex="1"/>
+		<result property="cmmClCd"   column="CMM_CL_CD" columnIndex="2"/>
+		<result property="cmmClCdNm" column="CMM_CL_CD_NM" columnIndex="3"/>
+		<result property="useYn"     column="USE_YN" columnIndex="4"/>	
+		<result property="ordNo"     column="ORD_NO" columnIndex="5"/>
+		<result property="payAmt"    column="PAY_AMT" columnIndex="6"/>
+	</resultMap>
+	
+	<select id="CmmDetailManageDAO.selectDetail" parameterClass="CmmDVO" resultMap="detail" >
+		<![CDATA[
+			SELECT
+			      A.CMM_CD
+				, A.CMM_CL_CD
+				, A.CMM_CL_CD_NM
+				, A.USE_YN
+                , ORD_NO
+				, PAY_AMT
+			 FROM TCMM002 A
+			WHERE 1=1
+			  AND A.CMM_CD    = #cmmCd#
+			  AND A.CMM_CL_CD = #cmmClCd#
+			  AND A.MATE_STAT_CL_CD = '01'
+		]]>
+	</select>	
+	
+	
+ 	<update id="CmmDetailManageDAO.update" parameterClass="CmmDVO">
+ 		<![CDATA[
+			
+			UPDATE TCMM002 A
+			   SET CMM_CL_CD_NM    = #cmmClCdNm#           
+				 , USE_YN          = #useYn#          
+				 , ORD_NO          = #ordNo#          
+				 , PAY_AMT         = #payAmt#          
+				 , LST_ALT_DTM     = #lstAltDtm#
+				 , LST_ALT_USER_ID = #lstAltUserId#
+				 , LST_ALT_PGM_ID  = #lstAltPgmId#
+			 WHERE 1=1
+			   AND A.CMM_CD    = #cmmCd#
+			   AND A.CMM_CL_CD = #cmmClCd#
+			   AND MATE_STAT_CL_CD = '01'
+ 		]]>
+ 	</update>
+ 	
+	
+ 	<update id="CmmDetailManageDAO.delete" parameterClass="CmmDVO">
+ 		<![CDATA[
+ 		    
+ 		    DELETE 
+ 		      FROM TCMM002 
+			 WHERE 1=1
+			   AND CMM_CD    = #cmmCd#
+			   AND CMM_CL_CD = #cmmClCd#
+			   AND MATE_STAT_CL_CD = '01'
+ 		]]>
+ 	</update>
+	
+ 	<update id="CmmDetailManageDAO.deleteAll" parameterClass="CmmDVO">
+ 		<![CDATA[
+ 		    
+ 		    DELETE 
+ 		      FROM TCMM002 
+			 WHERE 1=1
+			   AND CMM_CD    = #cmmCd#
+ 		]]>
+ 	</update>
+	
+	
+	
+</sqlMap>

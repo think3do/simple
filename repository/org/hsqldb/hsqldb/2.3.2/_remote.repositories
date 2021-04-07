@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Fri Feb 12 10:49:00 KST 2021
+hsqldb-2.3.2.jar>mvn2s=
+hsqldb-2.3.2.pom>mvn2s=
+hsqldb-2.3.2-sources.jar>mvn2s=

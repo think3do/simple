@@ -1,0 +1,9 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Mon Mar 22 04:24:24 KST 2021
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact org.springframework\:spring-web\:jar\:sources\:4.3.16.RELEASE from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/org/springframework/spring-web/4.3.16.RELEASE/spring-web-4.3.16.RELEASE-sources.jar. Error code 501, HTTPS Required
+http\://www.egovframe.go.kr/maven/.error=
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1616354662256
+https\://repo.maven.apache.org/maven2/.lastUpdated=1616354664225
+http\://www.egovframe.go.kr/maven/.lastUpdated=1616354662426
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1616354662473

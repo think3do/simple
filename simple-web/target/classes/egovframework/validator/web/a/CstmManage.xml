@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC 
+    "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1//EN" 
+    "http://jakarta.apache.org/commons/dtds/validator_1_1.dtd">
+
+<form-validation>
+
+    <formset>
+		<form name="cstmSVO">
+			
+			<field property="cstmNm" depends="required, maxlength">
+        		<arg0 key="web.cstmNm" />
+        		<arg1 key="50" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+			
+			
+			<field property="cstmDscmNo" depends="required, maxlength">
+        		<arg0 key="web.cstmDscmNo" />
+        		<arg1 key="13" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>13</var-value>
+				</var>
+			</field>
+			
+			
+		</form>
+    </formset>
+
+</form-validation>
